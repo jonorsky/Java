@@ -1,0 +1,22 @@
+1- Introduction
+  * When creating a code and compiled it converts as a binary code that can computer run
+  * Requirements to compile Java Code is JDK - javac and JRE - JVM
+    ** JDK = Java Development Kit | Software Development Environment
+    ** JRE = Java Runtime Environment | set of software tools,JVM, and supporting libraries
+
+
+[.java] -> [Binary .class] -> [JVM]
+
+2- How Java Works
+  * javac is a part of JDK - java Development kit
+  * 1 .java file = 1 binary file .class
+  * JVM - Simulator, Virtual Machine
+  * Java Swing = Desktop Applications
+  * Spring Framework = Java Web Applications *Most Popular Application Development Framework
+    ** Enterprise Java | basically a server-side
+    ** 'Servlets' and JSP: Web Application with java
+
+Data Types
+  int
+  double
+  String
