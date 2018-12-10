@@ -717,3 +717,74 @@ public interface Version{
   public void showversion();
 }
 ================================================================================
+
+29- Public, Private, Protected
+Default - If you don't use any modifier, it is treated as default bydefault. The default modifier is accessible only within package.
+Public - is accessible everywhere. Widests scope among modifiers
+Private - is accessible within a class.
+Protected - accessible within a class, subclass.
+
+Modifier	| within class	| within package	| outside package by subclass only	| outside package |
+Private	Y	N	N	N
+Default	Y	Y	N	N
+Protected	Y	Y	Y	N
+Public	Y	Y	Y	Y
+
+================================================================================
+
+30- Polymorphism - can have many forms. For example we want an array of foods with
+different instance variables and methods. Polymorphism is good way to implement this
+particular problem.
+  Given:
+    Superclass Food
+    sub-class Tuna and Egg
+
+    Food all[] = new Food[5];
+    all[0] = new Tuna;
+    all[1] = new Egg;
+
+Files:
+  Egg.java
+  Food.java
+  Tuna.java
+  Main.java
+
+====================
+// Egg.java
+
+public class Egg extends Food{
+  Egg(){
+    this.name = "Egg";
+  }
+
+}
+====================
+// Food.java
+
+public class Food{
+  public String name;
+}
+====================
+// Tuna.java
+
+public class Tuna extends Food{
+  Tuna(){
+    this.name = "Tuna";
+  }
+}
+====================
+// Main.java
+public class Main{
+  public static void main(String[] args){
+    final int limit = 5;
+    Food poly[] = new Food[limit];
+    poly[0] = new Egg();
+    poly[1] = new Tuna();
+
+    for(int i=0; i<2; i++){
+      System.out.println(poly[i].name);
+    }
+
+  }
+}
+====================
