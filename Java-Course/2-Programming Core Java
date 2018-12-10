@@ -689,3 +689,31 @@ public class Person implements Info{
   }
 }
 ================================================================================
+Modified: Multiple Inheritance in java by interface
+// File: Machine.java
+// implements does is it forces to override all headers and methods specify
+// into the interface file 'Info.java'
+
+public class Machine implements Info,Version{
+  private int id = 7;
+
+  public void start(){
+    System.out.println("Running..");
+  }
+
+  @Override
+  public void showinfo(){
+    System.out.println("Machine ID is: " + id);
+  }
+
+  @Override
+  public void showversion(){
+    System.out.println("Version is: 12345");
+  }
+}
+
+// File: Version.java
+public interface Version{
+  public void showversion();
+}
+================================================================================
