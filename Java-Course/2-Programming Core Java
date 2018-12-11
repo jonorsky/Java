@@ -852,3 +852,204 @@ public class Main{
 }
 
 32-  Casting Numerical Values
+
+public class Main{
+  public static void main(String[] args){
+
+    byte byteValue = 20;
+    short shortValue = 55; // Short Version of Int, which takes less memory, 32bytes
+    int intValue = 888;
+    long longValue = 23355;
+
+    float floatValue = 8834.5f;
+    double doubleValue = 32.4;
+
+    intValue = (int)longValue;
+    System.out.println(intValue);
+
+    doubleValue = intValue;
+
+    byteValue = (byte)128;
+    System.out.println(byteValue);
+
+  }
+}
+
+33- Upcasting Downcasting
+
+
+class Machine{
+  public void start(){
+    System.out.println("Machine Started..");
+  }
+}
+
+class Camera extends Machine{
+  @Override
+  public void start(){
+    System.out.println("Camera Started..");
+  }
+
+  public void snap(){
+    System.out.println("Photo taken..");
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    Machine m1 = new Machine();
+    Camera c1 = new Camera();
+
+    m1.start();
+    c1.start();
+    c1.snap();
+
+    // Upcasting:
+    Machine m2 = c1; // Polymorphism | Upcasting
+    m2.start();
+
+    // Data Type Machine | All instance variables only in Machine since
+    // the Data type that used is Machine
+    // = m2 variable is Machine and the Machine has only have 1 method
+    //   which is start(), so Machine Variable can only call start method
+
+    // the type of Variable determines what method we can call
+    // m2.snap(); <- Error
+    System.out.println();
+    // Downcasting:
+    Machine m3 = new Camera();
+    Camera c2 = (Camera)m3;
+    c2.start();
+    c2.snap();
+
+  }
+}
+
+
+34- Using Generics
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.Map;
+
+class Animal{
+  private String name;
+  private int age;
+
+  public void setName(String name){
+    this.name = name;
+  }
+
+  public void setAge(int age){
+    this.age = age;
+  }
+
+  public String getName(){
+    return this.name;
+  }
+
+  public int getAge(){
+    return this.age;
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    /* Java 5 - Old Style */
+    ArrayList list = new ArrayList();
+    list.add("apple");
+    list.add("banana");
+    list.add("orange");
+
+    String food = (String)list.get(1);
+
+    System.out.println(food);
+
+    /* Modern Style - Generic Class */
+    ArrayList<String> strings = new ArrayList<String>();
+    strings.add("Cat");
+    strings.add("Dog");
+    strings.add("Monkey");
+
+    String animal = strings.get(1);
+    System.out.println(animal);
+
+    /* There can be more one type argument , Integer and String */
+    HashMap<Integer,String> map = new HashMap<Integer,String>();
+    /* Display content using Iterator*/
+      map.put(12,"Nicos");
+
+      Set set = map.entrySet();
+      Iterator iterator = set.iterator();
+      while(iterator.hasNext()) {
+         Map.Entry it = (Map.Entry)iterator.next();
+         System.out.print(it.getKey() + " ");
+         System.out.println(it.getValue());
+    }
+
+    /* Java 7 Style */
+    ArrayList<Animal> kingdom = new ArrayList<>();
+
+    Animal nico = new Animal();
+    nico.setName("Nico");
+    nico.setAge(14);
+
+    kingdom.add(nico);
+
+    System.out.println(kingdom.get(0).getName());
+
+  }
+}
+
+36- Anonymous Class
+
+
+class Machine {
+  public void start(){
+    System.out.println("Starting Machine...");
+  }
+}
+
+interface Plant{
+  public void grow();
+}
+
+public class Main{
+  public static void main(String[] args){
+    /* Anonymous Class - Class that doesnt have name
+     * In bytecode, it generates Main$1.class and Main$2.class
+     * Advantage:
+     *  It can make interface class into an object within inline
+     */
+    Machine machine1 = new Machine(){
+      @Override
+        public void start(){
+          System.out.println("Camera Snapping...");
+        }
+    };
+    Machine machine2 = new Machine(){
+      @Override
+        public void start(){
+          System.out.println("Phone Destroyed!");
+        }
+    };
+
+    machine1.start();
+    machine2.start();
+
+    Plant plant1 = new Plant(){
+      @Override
+        public void grow(){
+          System.out.println("Plant is growing..");
+        }
+    };
+
+    plant1.grow();
+
+  }
+}
+
+
+37- Reading File Using Scanner
