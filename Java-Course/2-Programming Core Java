@@ -1052,4 +1052,195 @@ public class Main{
 }
 
 
-37- Reading File Using Scanner
+38- Handling Exemption
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+
+public class Main{
+  public static void main(String[] args){
+    File file = new File("test.txt");
+
+    try{
+      FileReader fr = new FileReader(file);
+    }catch (FileNotFoundException e){
+      e.printStackTrace();
+    }
+  }
+}
+
+
+41- abstract Class
+===== Main.java ====
+public class Main{
+  public static void main(String[] args){
+    Camera cam1 = new Camera();
+    cam1.setId(5);
+
+    Car car1 = new Car();
+    car1.setId(4);
+
+    // abstraction is a process of hiding the implementation details and showing
+    // only functionality to the user. It hides internal details.
+    // Example:
+    //  Sending SMS but we dont know the internal process of sending SMS.
+
+    // Abrtract class is mostly used to provide subclasses.
+
+    // Machine mc = new Machine(); // <-- it will throw error since machine is an abstract class
+
+    System.out.println(cam1.getId());
+    System.out.println(car1.getId());
+    System.out.println();
+    cam1.run();
+    //car1.run();
+  }
+}
+
+==========
+public abstract class Machine{ // <-- Abstract Class
+  private int id;
+
+  public int getId(){
+    return this.id;
+  }
+
+  public final void setId(int id){ // <-- final methods which will force the subclass not to change the body of the method
+    this.id = id;
+  }
+
+  // Abstract Method =  abstract method doesn’t have body. Alternative? run(){}
+  // Abstract Method forces to Override by the subclasses
+  public abstract void run();
+}
+===========
+public class Camera extends Machine{
+  @Override
+  public void run(){
+    System.out.println("Camera Snap..");
+  }
+}
+===========
+public class Car extends Machine{
+  @Override
+  public void run(){
+    System.out.println("Car Runs..");
+  }
+}
+===============================================================================
+
+45- The Equal Method
+
+class Person{
+  private int id;
+  private String name;
+
+  public Person(int id,String name){
+    this.id = id;
+    this.name = name;
+  }
+
+  @Override
+  public String toString(){
+    return "Person [id=]" + id + ", name=" + name + "]";
+  }
+
+  public String getName(){
+    return this.name;
+  }
+
+  @Override
+  public boolean equals(Object obj){
+    Person temp = (Person)obj;
+
+    if(this.name==temp.name)
+      return true;
+    else
+      return false;
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    Person p1 = new Person(1,"Nico");
+    Person p2 = new Person(2,"Nico");
+
+    // Using == in objects will check if the 1st comparison is also equal to its
+    // object position.
+    // p1 = p2 <-- it will return true, remove it then it returns false
+    // System.out.println(p1==p2);
+
+    // Overriding default .equals() function of java and
+    // injects object instance variable comparison
+    System.out.println(p1.equals(p2));
+  }
+}
+
+46- Inner class
+
+==== Main ======
+
+public class Main{
+  public static void main(String[] args){
+    Robot rb = new Robot(1);
+    rb.start();
+
+    // Using Inner Class to Group the Class
+    // Robot.Battery, Robot.CPU, Robot.Info
+    Robot.Battery battery = new Robot.Battery();
+    Robot.CPU cpu = new Robot.CPU();
+    battery.charge();
+    cpu.status();
+  }
+}
+
+=== Robot ====
+public class Robot{
+  private int id;
+
+  // Nested Class or Inner Class
+  // Used to Group Different Parts
+  // of the Blueprint or Class
+  private class Brain{
+    public void think(){
+      System.out.println("Robot " + id + " is thinking..");
+    }
+  }
+
+  // Static Class
+  public static class Battery{
+    public void charge(){
+      System.out.println("Battery Charging..");
+    }
+  }
+
+  // Static Class
+  public static class CPU{
+    public void status(){
+      System.out.println("37 Degrees..");
+    }
+  }
+
+  public Robot(int id){
+    this.id = id;
+  }
+
+  public void start(){
+    System.out.println("Starting robot " + id);
+    Brain brain = new Brain();
+    brain.think();
+
+    final String name = "Ava";
+    // Local Class
+    class Temp{
+      public void doSomething(){
+        System.out.println("ID is: " + id);
+        System.out.println("My name is " + name);
+      }
+    }
+    Temp temp = new Temp();
+    temp.doSomething();
+  }
+
+}
