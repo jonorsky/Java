@@ -192,3 +192,34 @@ public class Main{
     System.out.println(difference);
   }
 }
+
+55- HashMap: Retrieving Objects via a key
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main{
+  // HashMap is Lookup Table
+  // All Unique, it overrides other key values
+  // HashMap doesnt make it in order, sometimes random
+  public static void main(String[] args){
+    HashMap<Integer,String> map = new HashMap<Integer,String>();
+    map.put(5,"Five");
+    map.put(8,"Eight");
+    map.put(6,"Six");
+    map.put(4,"Four");
+    map.put(2,"Two");
+
+    String text = map.get(4);
+    System.out.println(text);
+
+    for(Map.Entry<Integer,String> entry: map.entrySet()){
+      int key = entry.getKey();
+      String value = entry.getValue();
+
+      System.out.println(key + ": " + value);
+    }
+  }
+}
+
+58- Using Custom Objects in Sets and as Keys in Maps
