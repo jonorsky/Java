@@ -1244,3 +1244,194 @@ public class Robot{
   }
 
 }
+
+
+49- Serialization
+Person.java
+====
+import java.io.Serializable;
+
+// implements Serializable = to make the class Person serializable
+public class Person implements Serializable{
+
+  // serialVersionUID = checks to read exact class
+  // Real Scenario:
+  //  This file with this version cant be read by this program
+
+  // Sample Usage:
+  // 1 - Compile & Run writeObjects with serial = 323456789
+  // 2 - Compile & Run readObjects = Can Read .bin
+  // 3 - Change Class Serial into = 423456789
+  // 4 - Compile & Run readObjects = ERROR! Cannot Read
+  // 5 - Compile & Run writeObjects with serial = 423456789
+  // 6 - Run readObjects = Can Read .bin
+
+  private static final long serialVersionUID = 423456789;
+  private int id;
+  private String name;
+
+  public Person(int id, String name){
+    this.id = id;
+    this.name = name;
+  }
+
+  @Override
+  public String toString(){
+    return "Person [id= " + id + ",name=" + name + "]";
+  }
+}
+====
+ReadObjects.java
+====
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+// Loading Functionality: Deserialization
+
+public class ReadObjects {
+  public static void main(String[] args){
+    System.out.println("Reading Objects..");
+
+    try(FileInputStream fi = new FileInputStream("people.bin")){
+      ObjectInputStream os = new ObjectInputStream(fi);
+
+      Person person1 = (Person)os.readObject();
+      Person person2 = (Person)os.readObject();
+      System.out.println(person1);
+      System.out.println(person2);
+
+      os.close();
+
+    }catch (FileNotFoundException e){
+      e.printStackTrace();
+    }catch (IOException e){
+      e.printStackTrace();
+    }catch (ClassNotFoundException e){
+      e.printStackTrace();
+    }
+  }
+}
+====
+writeObjects.java
+====
+import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+// Writing Functionality: Serialization
+
+public class WriteObjects{
+  public static void main(String[] args){
+      System.out.println("Writing Objects..");
+
+      Person jem = new Person(1,"Jem");
+      Person ed = new Person(2,"Ed");
+
+      System.out.println(jem);
+      System.out.println(ed);
+
+      // Java 7 or later, try catch
+      // Creating people.bin
+      try(FileOutputStream fs = new FileOutputStream("people.bin")){
+        ObjectOutputStream os = new ObjectOutputStream(fs);
+
+        os.writeObject(jem);
+        os.writeObject(ed);
+
+        os.close();
+      }catch (FileNotFoundException e){
+        e.printStackTrace();
+      }catch (IOException e){
+        e.printStackTrace();
+      }
+  }
+}
+====
+
+52. Passing by Value
+
+public class Main{
+
+  // class type is non primitive type, a reference
+  //   Primitive - 'Very Basic'
+  //     > int,char,short,byte,float,long,double
+  //   Non Primitive - which uses primitive data type as base
+  //     > class, array, enum, etc.
+  //
+  //   Person person = new Person("Nico");
+  //     > Person person - store address/reference
+  //     > new Person("Nico") - allocating enough memory
+
+
+  public static void main(String[] args){
+    Main app = new Main();
+
+    //============================================
+    int value = 6;
+    System.out.println("1. Value is: " + value);
+
+    app.show(value);
+
+    System.out.println("4. Value is: " + value);
+    //============================================
+    System.out.println();
+
+    Person person = new Person("Nico");
+    System.out.println("1. Person is: " + person);
+
+    app.show(person);
+
+    System.out.println("4. Person is: " + person);
+  }
+
+  // Passing by Value - just copying the passed value
+  public void show(int value){
+    System.out.println("2. Value is: " + value);
+
+    value = 8;
+
+    System.out.println("3. Value is: " + value);
+  }
+
+  // Passing by reference - just copying the address of person
+  public void show(Person person){
+    System.out.println("2. Person is: " + person);
+
+    // change value of the first address passed
+    person.setName("Jem");
+
+    // set new address to person
+    person = new Person("Mike");
+
+    // change value of the second address in body
+    person.setName("Ed");
+
+    System.out.println("3. Person is: " + person);
+  }
+}
+
+public class Person{
+  private String name;
+
+  public Person(String name) {
+    this.name = name;
+  }
+
+  public String getName(){
+    return this.name;
+  }
+
+  public void setName(String name){
+    this.name = name;
+  }
+
+  @Override
+  public String toString(){
+    return "Person [name = " + name + "]";
+  }
+}
+
+======================================================

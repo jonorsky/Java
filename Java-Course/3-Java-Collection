@@ -1,0 +1,225 @@
+53- ArrayList
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main{
+
+  public static void print(ArrayList<Integer> arr){
+    for(Integer value: arr){
+      System.out.println(value);
+    }
+  }
+
+  public static void main(String[] args){
+    // template classes = ArrayList<>
+    // we can put primitive type in ArrayList
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+    numbers.add(10);
+    numbers.add(100);
+    numbers.add(40);
+
+    for(int i=0; i<numbers.size(); i++)
+      System.out.println(numbers.get(i));
+
+    System.out.println();
+
+    // Delete last element - reasonably fast
+    numbers.remove(numbers.size()-1);
+    print(numbers);
+
+    // Delete first element - very slow, even middle of the list
+    numbers.remove(0);
+
+    // Solution is LinkedList
+
+    System.out.println();
+    print(numbers);
+
+    List<String> values = new ArrayList<String>();
+
+    // LinkedList consumed more memory than arraylist: Pros and cons
+  }
+}
+
+
+54- LinkedList
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Main{
+
+  // If we want to add only and remove in the end of the list, then use arraylist
+  // but if we want to add and remove anywhere in the list, then use LinkedList
+
+  // Golden Rule: If you want to insert an element in the beginning of the List
+  // then use LinkedList, else if you wan to insert into mid->end or end of the list
+  // then use ArrayList
+  public static void main(String[] args){
+
+    // ArrayList manage arrays internaly
+    // [0][1][2]....[n]
+    ArrayList<Integer> arraylist = new ArrayList<Integer>();
+    // When adding elements in front of list using ArrayList, it shifts
+    // items to the right and it consumes a lot of time.
+    //  > Faster in the end because it shifts only a few elements rather
+    //    than the very first element
+    LinkedList<Integer> linkedList = new LinkedList<Integer>();
+    // LinkedList consist of elements where each element has a reference
+    // to the previous and next element.
+    // [0]->[1]->[2]->[3] .... ->[n]
+    // slow because get element and get link to the next
+    //  > fast in insert and delete anywhere because it gets the link and
+    //    connects only to the next element rather than shifting.
+
+    doTimings("ArrayList", arraylist);
+    doTimings("LinkedList", linkedList);
+  }
+
+  private static void doTimings(String type, List<Integer> list){
+
+
+    long start = System.currentTimeMillis();
+
+    // Add items at end of list
+    // for(int i=0; i<1E5; i++){
+    //   list.add(i);
+    // }
+
+    // Add items at the beginning of list
+    for(int i=0; i<1E5; i++){
+      list.add(0,i);
+    }
+
+    long end = System.currentTimeMillis();
+
+    System.out.println("Time Taken: " + (end-start) + " ms for " + type);
+  }
+}
+
+56- Sorted Maps
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.TreeMap;
+import java.util.Map;
+
+public class Main{
+  // Major: linked, map, and sets
+  public static void main(String[] args){
+    // Not guaranteed order, but based on my observation. keys are sorted
+    HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
+    // same order of data insertion
+    LinkedHashMap<Integer, String> linkedhashMap = new LinkedHashMap<Integer, String>();
+    // Tree map sorts the keys and natural order
+    TreeMap<Integer, String> treeMap = new TreeMap<Integer, String>();
+
+    testMap(treeMap);
+  }
+
+  public static void testMap(Map<Integer, String> map){
+    map.put(9,"fox");
+    map.put(4,"cat");
+    map.put(8,"dog");
+    map.put(1,"giraffe");
+    map.put(0,"wan");
+    map.put(15,"bear");
+    map.put(6,"snake");
+
+    for(Integer key: map.keySet()){
+      System.out.println(key + ": " + map.get(key));
+    }
+  }
+}
+
+57- Sets
+
+import java.util.Set;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.TreeSet;
+
+public class Main{
+  public static void main(String[] args){
+
+    // HashSet does not retain order.
+    // only stores unique element
+    //Set<String> set1 = new HashSet<String>();
+
+    // LinkedHashSet remembers the order we added items in
+    // Set<String> set1 = new LinkedHashSet<String>();
+
+    // TreeSet sorts in natural order/dictionary
+    Set<String> set1 = new TreeSet<String>();
+
+
+    set1.add("dog");
+    set1.add("cat");
+    set1.add("mouse");
+    set1.add("snake");
+    set1.add("bear");
+
+    // Adding duplicate items does nothing.
+    set1. add("mouse");
+
+    System.out.println(set1);
+
+    /////////// Iteration //////////
+    for(String element: set1){
+      System.out.println(element);
+    }
+
+
+    // Intersection
+    Set<String> set2 = new TreeSet<String>();
+    set2.add("dog");
+    set2.add("cat");
+    set2.add("giraffe");
+    set2.add("monkey");
+    set2.add("ant");
+
+    Set<String> intersection = new HashSet<String>(set1);
+    System.out.println(intersection);
+
+    // Intersection between 2 sets
+    intersection.retainAll(set2);
+    System.out.println(intersection);
+
+    Set<String> difference = new HashSet<String>(set1);
+    difference .removeAll(set2);
+    System.out.println(difference);
+  }
+}
+
+55- HashMap: Retrieving Objects via a key
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main{
+  // HashMap is Lookup Table
+  // All Unique, it overrides other key values
+  // HashMap doesnt make it in order, sometimes random
+  public static void main(String[] args){
+    HashMap<Integer,String> map = new HashMap<Integer,String>();
+    map.put(5,"Five");
+    map.put(8,"Eight");
+    map.put(6,"Six");
+    map.put(4,"Four");
+    map.put(2,"Two");
+
+    String text = map.get(4);
+    System.out.println(text);
+
+    for(Map.Entry<Integer,String> entry: map.entrySet()){
+      int key = entry.getKey();
+      String value = entry.getValue();
+
+      System.out.println(key + ": " + value);
+    }
+  }
+}
+
+58- Using Custom Objects in Sets and as Keys in Maps
