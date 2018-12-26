@@ -72,7 +72,7 @@ public class Main{
   }
 }
 ```
-## if,if else,else statement
+## if, if else, else statement
 ```
 public class Main{
   public static void main(String[] args){
@@ -512,8 +512,6 @@ class Machine{
   }
 }
 ```
-Child Class
-
 ```
 class Car extends Machine{
 
@@ -533,7 +531,6 @@ class Car extends Machine{
   }
 }
 ```
-Main
 
 ```
 public class Main{
@@ -665,18 +662,20 @@ java Main
 // Execute
 ```
 
-## 28- interface
-================================================================================
+## Interface
+
 Interface is a blueprint of a class, to achieve abstraction. In short, it visualize
 abstract methods and variables, it cannot have a method body.
 Files:
-  Info.java
-  Machine.java
-  Main.java
-  Person.java
+> Info.java
 
-================================================================================
-// Main.java
+>  Machine.java
+
+>  Main.java
+
+>  Person.java
+
+```
 public class Main{
   public static void main(String[] args){
     Machine mach1 = new Machine();
@@ -689,12 +688,13 @@ public class Main{
     person1.showinfo();
   }
 }
-================================================================================
-// Info.java
+```
+```
 public interface Info{
   public void showinfo();
 }
-================================================================================
+```
+```
 // Machine.java
 // implements does is it forces to override all headers and methods specify
 // into the interface file 'Info.java'
@@ -711,8 +711,8 @@ public class Machine implements Info{
     System.out.println("Machine ID is: " + id);
   }
 }
-================================================================================
-// Person.java
+```
+```
 public class Person implements Info{
   private String name;
 
@@ -729,12 +729,14 @@ public class Person implements Info{
     System.out.println("Person Name is: " + name);
   }
 }
-================================================================================
-Modified: Multiple Inheritance in java by interface
-// File: Machine.java
-// implements does is it forces to override all headers and methods specify
-// into the interface file 'Info.java'
+```
 
+Modified: Multiple Inheritance in java by interface
+> File: Machine.java
+> implements does is it forces to override all headers and methods specify
+> into the interface file 'Info.java'
+
+```
 public class Machine implements Info,Version{
   private int id = 7;
 
@@ -752,30 +754,30 @@ public class Machine implements Info,Version{
     System.out.println("Version is: 12345");
   }
 }
+```
 
-// File: Version.java
+```
 public interface Version{
   public void showversion();
 }
-================================================================================
+```
 
-29- Public, Private, Protected
-Default - If you don't use any modifier, it is treated as default bydefault. The default modifier is accessible only within package.
-Public - is accessible everywhere. Widests scope among modifiers
-Private - is accessible within a class.
-Protected - accessible within a class, subclass.
+## Public, Private, Protected
 
-Modifier	| within class	| within package	| outside package by subclass only	| outside package |
-Private	Y	N	N	N
-Default	Y	Y	N	N
-Protected	Y	Y	Y	N
-Public	Y	Y	Y	Y
+**Default** - If you don't use any modifier, it is treated as default bydefault. The default modifier is accessible only within package.
 
-================================================================================
+**Public** - is accessible everywhere. Widests scope among modifiers
 
-30- Polymorphism - can have many forms. For example we want an array of foods with
+**Private** - is accessible within a class.
+
+**Protected** - accessible within a class, subclass.
+
+
+## Polymorphism
+Can have many forms. For example we want an array of foods with
 different instance variables and methods. Polymorphism is good way to implement this
 particular problem.
+ 
   Given:
     Superclass Food
     sub-class Tuna and Egg
@@ -784,37 +786,35 @@ particular problem.
     all[0] = new Tuna;
     all[1] = new Egg;
 
+```
 Files:
   Egg.java
   Food.java
   Tuna.java
   Main.java
 
-====================
-// Egg.java
-
+```
+```
 public class Egg extends Food{
   Egg(){
     this.name = "Egg";
   }
 
 }
-====================
-// Food.java
-
+```
+```
 public class Food{
   public String name;
 }
-====================
-// Tuna.java
-
+```
+```
 public class Tuna extends Food{
   Tuna(){
     this.name = "Tuna";
   }
 }
-====================
-// Main.java
+```
+```
 public class Main{
   public static void main(String[] args){
     final int limit = 5;
@@ -828,10 +828,10 @@ public class Main{
 
   }
 }
-====================
+```
 
-31. Encapsulation and API Docs
-
+## Encapsulation and API Docs
+```
 class Plant{
   // Data must be public, if the data needs to be access in subclass then make
   // it protected, and then all instance data must be private except constant
@@ -877,7 +877,8 @@ class Plant{
       this.name = name;
   }
 }
-
+```
+```
 public class Main{
   /*  If the Parameter of the redlips object consist of any Uppercase Letter
    *  then it will input null as the setter gets
@@ -891,9 +892,9 @@ public class Main{
       System.out.println(redlips.getName());
   }
 }
-
-32-  Casting Numerical Values
-
+```
+## Casting Numerical Values
+```
 public class Main{
   public static void main(String[] args){
 
@@ -915,16 +916,17 @@ public class Main{
 
   }
 }
+```
+## Upcasting Downcasting
 
-33- Upcasting Downcasting
-
-
+```
 class Machine{
   public void start(){
     System.out.println("Machine Started..");
   }
 }
-
+```
+```
 class Camera extends Machine{
   @Override
   public void start(){
@@ -935,7 +937,8 @@ class Camera extends Machine{
     System.out.println("Photo taken..");
   }
 }
-
+```
+```
 public class Main{
   public static void main(String[] args){
     Machine m1 = new Machine();
@@ -965,10 +968,10 @@ public class Main{
 
   }
 }
+```
 
-
-34- Using Generics
-
+## Using Generics
+```
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -1043,20 +1046,23 @@ public class Main{
 
   }
 }
+```
 
-36- Anonymous Class
+## Anonymous Class
 
-
+```
 class Machine {
   public void start(){
     System.out.println("Starting Machine...");
   }
 }
-
+```
+```
 interface Plant{
   public void grow();
 }
-
+```
+```
 public class Main{
   public static void main(String[] args){
     /* Anonymous Class - Class that doesnt have name
@@ -1091,10 +1097,10 @@ public class Main{
 
   }
 }
+```
 
-
-38- Handling Exemption
-
+## Handling Exemption
+```
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -1110,10 +1116,10 @@ public class Main{
     }
   }
 }
+```
 
-
-41- abstract Class
-===== Main.java ====
+## Abstract Class
+```
 public class Main{
   public static void main(String[] args){
     Camera cam1 = new Camera();
@@ -1138,8 +1144,8 @@ public class Main{
     //car1.run();
   }
 }
-
-==========
+```
+```
 public abstract class Machine{ // <-- Abstract Class
   private int id;
 
@@ -1155,24 +1161,25 @@ public abstract class Machine{ // <-- Abstract Class
   // Abstract Method forces to Override by the subclasses
   public abstract void run();
 }
-===========
+```
+```
 public class Camera extends Machine{
   @Override
   public void run(){
     System.out.println("Camera Snap..");
   }
 }
-===========
+```
+```
 public class Car extends Machine{
   @Override
   public void run(){
     System.out.println("Car Runs..");
   }
 }
-===============================================================================
-
-45- The Equal Method
-
+```
+## The Equal Method
+```
 class Person{
   private int id;
   private String name;
@@ -1217,11 +1224,10 @@ public class Main{
     System.out.println(p1.equals(p2));
   }
 }
+```
 
-46- Inner class
-
-==== Main ======
-
+## Inner class
+```
 public class Main{
   public static void main(String[] args){
     Robot rb = new Robot(1);
@@ -1235,8 +1241,8 @@ public class Main{
     cpu.status();
   }
 }
-
-=== Robot ====
+```
+```
 public class Robot{
   private int id;
 
@@ -1285,11 +1291,10 @@ public class Robot{
   }
 
 }
+```
 
-
-49- Serialization
-Person.java
-====
+## Serialization
+```
 import java.io.Serializable;
 
 // implements Serializable = to make the class Person serializable
@@ -1321,9 +1326,8 @@ public class Person implements Serializable{
     return "Person [id= " + id + ",name=" + name + "]";
   }
 }
-====
-ReadObjects.java
-====
+```
+```
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -1354,9 +1358,8 @@ public class ReadObjects {
     }
   }
 }
-====
-writeObjects.java
-====
+```
+```
 import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -1390,10 +1393,9 @@ public class WriteObjects{
       }
   }
 }
-====
-
-52. Passing by Value
-
+```
+## Passing by Value
+```
 public class Main{
 
   // class type is non primitive type, a reference
@@ -1453,7 +1455,8 @@ public class Main{
     System.out.println("3. Person is: " + person);
   }
 }
-
+```
+```
 public class Person{
   private String name;
 
@@ -1474,5 +1477,4 @@ public class Person{
     return "Person [name = " + name + "]";
   }
 }
-
-======================================================
+```
