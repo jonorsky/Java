@@ -443,6 +443,7 @@ public class Main{
 
 ## To String
 
+```
 class Frog{
 
 }
@@ -457,10 +458,12 @@ public class Main{
       System.out.println(frog1);
   }
 }
+```
 
 StringBuilder = Efficient that concatinating Strings because when we concat
 strings we're making another strings which inefficient.
 
+```
 class Frog{
   private String name;
   private int id;
@@ -481,9 +484,11 @@ class Frog{
     return sb.toString();
   }
 }
+```
 
-// Helpful for Debugging objects by looking its content
+Helpful for Debugging objects by looking its content
 
+```
 public class Main{
   public static void main(String[] args){
       Frog frog1 = new Frog(7,"Nico ");
@@ -493,11 +498,11 @@ public class Main{
       System.out.println(frog2);
   }
 }
+```
 
-26- Inheritance
+## Inheritance
 
-Override
-
+```
 class Machine{
   public void start(){
     System.out.println("Machine Started..");
@@ -506,7 +511,10 @@ class Machine{
     System.out.println("Machine Stop..");
   }
 }
+```
+Child Class
 
+```
 class Car extends Machine{
 
   // Overriding the start() function from Superclass Machine
@@ -524,7 +532,10 @@ class Car extends Machine{
     System.out.println("Wiping windshield");
   }
 }
+```
+Main
 
+```
 public class Main{
   public static void main(String[] args){
       Machine mach1 = new Machine();
@@ -536,9 +547,11 @@ public class Main{
       mach2.start();
   }
 }
+```
 
-27- Package
+## Package
 
+```
 import p.Person;
 
 public class Main{
@@ -551,26 +564,29 @@ public class Main{
     System.out.println(p1.age);
   }
 }
+```
 
-// Run:
-// Make Folder and Copy Person.java and Main.java
-// * cd to that folder and use this commands
-//  > javac -d . Person.java
-//  > javac Main.java
-//  > java Main
+Run:
+* Make Folder and Copy Person.java and Main.java
+* cd to that folder and use this commands
+* javac -d . Person.java
+* javac Main.java
+* java Main
 
-// In the First statement, it creates package folder p with .class
-// Second statement is to import the package + Class name
-// Execute
+> In the First statement, it creates package folder p with .class
+> Second statement is to import the package + Class name
 
-================================================================================
+> **Execute**
+
+
 Folder Content:
 > mkdir 'test'
 Fish.java
 Main.java
 Person.java
 Info.java
-================================================================================
+
+```
 /* File Name: Fish.java */
 package ocean;
 
@@ -579,7 +595,9 @@ public class Fish{
   public int age;
   public String description;
 }
-================================================================================
+```
+
+```
 /* File Name: Person.java */
 // Java Package: javac -d . "file name"
 // look for the "file name" it must have 'package com;'
@@ -590,15 +608,16 @@ public class Person{
   public String name;
   public int age;
 }
-================================================================================
+```
+```
 /* File Name: Info.java */
 package ocean.info;
 
 public class Info{
   public static final String version = "1.5.0";
 }
-
-================================================================================
+```
+```
 /* File Name: Main.java */
 
 import ocean.Person;
@@ -627,7 +646,8 @@ public class Main{
     System.out.println("Version: " + info1.version);
   }
 }
-================================================================================
+```
+```
 // Run:
 // Make Folder and Copy Person.java and Main.java
 // * cd to that folder and use this commands
@@ -643,9 +663,9 @@ java Main
 // In the First statement, it creates package folder p with .class
 // Second statement is to import the package + Class name
 // Execute
-================================================================================
+```
 
-28- interface
+## 28- interface
 ================================================================================
 Interface is a blueprint of a class, to achieve abstraction. In short, it visualize
 abstract methods and variables, it cannot have a method body.
