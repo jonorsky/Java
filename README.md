@@ -274,6 +274,14 @@ public class Main{
 ```
 
 ## Static and Final
+
+Title | Description
+--- | ---
+Primitive data declaration | The value assigned to the variable cannot be changed.
+Reference variable | You cannot change the variable to reference a different variable. However, it may be possible to change the object the variable is referencing to.
+Method | The method cannot be overridden.
+Class | The class cannot be extended.
+
 ```
 class Student{
     static String school = "Ateneo"; // static
