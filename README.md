@@ -140,15 +140,15 @@ public class Main{
 ## Arrays
 Key points to remember when using arrays
 When working with arrays remember:
-• Array indexes start at 0
-• Indexes have to be integers
-• An array can hold primitive data types or objects
-• Arrays provide constant time random access which is an efficient way of
+* Array indexes start at 0
+* Indexes have to be integers
+* An array can hold primitive data types or objects
+* Arrays provide constant time random access which is an efficient way of
 accessing data
-• Arrays provide good locality of reference
-• Arrays are more difficult to insert or remove elements than other
+* Arrays provide good locality of reference
+* Arrays are more difficult to insert or remove elements than other
 data structures
-• An index to an invalid element is possible
+* An index to an invalid element is possible
 
 ```
 public class Main{
