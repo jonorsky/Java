@@ -203,6 +203,9 @@ public class Main{
 ```
 
 ## Class and Objects
+Class - Blueprint of the Object
+
+
 ```
 class Person{
   // Instance Variables (Data or States)
