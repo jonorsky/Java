@@ -203,8 +203,8 @@ public class Main{
 ```
 
 ## Class and Objects
-Class - Blueprint of the Object
-Object - is created using new keyword
+**Class** - Blueprint of the Object
+**Object** - is created using new keyword
 * Memory is allocated for the new instance of the class
 * A constructor is then called to perform initialization of the object
 * A reference to the object is returned
