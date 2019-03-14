@@ -266,6 +266,13 @@ public class Person{
 }
 ```
 
+## Default constructors
+A default constructor is normally present for a class. If a class does not have any
+constructors explicitly declared, it automatically has a default constructor.
+
+The **default constructor** will essentially initialize its **instance variables** to **0** as explained
+in the Initializing identifiers
+
 ## Immutable Objects
 ```
 import java.util.Date;
