@@ -320,6 +320,13 @@ public class Main{
 ```
 
 ## Set and Getter
+Setter = Accessors
+Getter = Mutators
+
+An accessor method is one that reads or accesses a variable of a class. A mutator
+method is one that modifies a variable of a class. These methods are usually public
+and the instance variables are normally declared as private. 
+
 ```
 class Person{
   private int age;
