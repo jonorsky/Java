@@ -239,6 +239,13 @@ public class Main{
 ```
 
 ## Constructor
+Constructors are used to initialize the member variables of a class. When an object
+is created, memory is allocated for the object and the constructor for the class is
+executed. This typically occurs using the new keyword.
+* Constructors have the same name as the class
+* Constructor overloading is permitted
+* Constructors are not methods
+* Constructors do not have a return type, not even void
 
 ## Immutable Objects
 ```
