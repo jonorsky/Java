@@ -273,6 +273,10 @@ constructors explicitly declared, it automatically has a default constructor.
 The **default constructor** will essentially initialize its **instance variables** to **0** as explained
 in the Initializing identifiers
 
+## Methods
+A method is a group of statements used to complete a specific task. A method has
+a return value, a name, a set of parameters, and a body. 
+
 ## Immutable Objects
 ```
 import java.util.Date;
