@@ -246,6 +246,25 @@ executed. This typically occurs using the new keyword.
 * Constructor overloading is permitted
 * Constructors are not methods
 * Constructors do not have a return type, not even void
+```
+public class Person{
+  private String name;
+  private int zip;
+  private int age;
+
+  public Person(){
+
+  }
+
+  public Person(String name){
+
+  }
+
+  public Person(String name, int zip){
+    
+  }
+}
+```
 
 ## Immutable Objects
 ```
