@@ -209,6 +209,13 @@ public class Main{
 * A reference to the object is returned
 
 ## Instance and Static Class members
+There are two types of variables or methods:
+* Instance
+* Static
+An **instance variable** is declared as a part of the class and is associated with an object.
+A **static variable** is declared in the same way, except that it is preceded by the static
+keyword. When an object is created, it has its own set of instance variables. However,
+all objects share a single copy of static variables.
 
 ```
 class Person{
