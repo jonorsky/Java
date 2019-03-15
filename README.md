@@ -1,5 +1,4 @@
 # Java Core
-![](https://www.wesrch.com/userfiles/write_for_us/featured(1).jpg)
 
 ## A Hello World Program
 
