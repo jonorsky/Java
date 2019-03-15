@@ -209,6 +209,7 @@ public class Main{
 * A constructor is then called to perform initialization of the object
 * A reference to the object is returned
 
+## Instance and Static Class members
 
 ```
 class Person{
